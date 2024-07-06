@@ -30,4 +30,4 @@ Tablas principales:
 El puerto 5666 fue elegido para ser mapeado para conexiones externas, dentro del contenedor el puerto usado es por defecto 5432
 
 ### Parte 3: Script SQL para crear las tablas (sin poblarlas)
-
+[Script](scripts/chinook.sql)
