@@ -5,11 +5,10 @@ services:
     environment:
       POSTGRES_USER: itbatps
       POSTGRES_PASSWORD: password
-      POSTGRES_DB: mydatabase
     ports:
       - "5666:5432"
     volumes:
       - pgdata:/var/lib/postgresql/data
-
+      - ./scripts:/docker-entrypoint-initdb.d
 volumes:
   pgdata:
