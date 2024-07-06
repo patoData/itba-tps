@@ -17,4 +17,5 @@ de varios tutoriales que he realizado en los path de Ms Learn.
 - ¿Qué productos tienen el mayor costo de producción?
 
 ### Parte 2:
-Un docker compose con la imagen de postgreSQL 12.7:
+Un docker compose con la imagen de postgreSQL 12.7:(docker-compose.yml)
+El puerto 5666 fue elegido para ser mapeado para conexiones externas, dentro del contenedor el puerto usado es por defecto 5432
