@@ -6,17 +6,27 @@
 - [Enunciado](enunciado-itba.pdf)
 
 ### Parte 1:
-La base de datos elegida es AdventureWorks, el motivo de la eleccion de la misma es que trabajo como ingeniero de datos
-en la nube de Azure hace ya dos años y me agilizaria el entendimiento de los datos usar estas tablas que ya son conocidas
-de varios tutoriales que he realizado en los path de Ms Learn.
-### ¿Preguntas de negocio que podemos responder con esta base?
-- ¿Cuáles son los productos más vendidos y cuáles son sus características?
-- ¿Cuál es el desempeño de ventas por región geográfica?
-- ¿Cuáles son los clientes más valiosos?
-- ¿Cuál es el tiempo promedio de entrega de los productos?
-- ¿Qué productos tienen el mayor costo de producción?
+La base de datos elegida es Chinook. La base de datos "Chinook" es un conjunto de datos de ejemplo diseñado para simular el funcionamiento de una tienda de música digital.
+Tablas principales:
 
-### Parte 2:
-Un docker compose con la imagen de postgreSQL 12.7:
+Albums: Contiene información sobre los álbumes disponibles en la tienda, como título y artista.
+Artists: Tabla que almacena información sobre los artistas cuyos álbumes están disponibles en la tienda.
+Tracks: Detalla cada pista de música disponible para la venta, incluyendo nombre, álbum al que pertenece, duración y género.
+Customers: Información de los clientes registrados en la tienda, como nombre, dirección y país.
+Invoices: Registros de cada compra realizada por los clientes, incluyendo detalles como fecha, total de compra y método de pago.
+InvoiceItems: Detalle de cada artículo comprado en una factura, incluyendo la cantidad y el precio unitario.
+Genres: Tabla que enumera los diferentes géneros musicales disponibles en la tienda.
+
+### ¿Preguntas de negocio que podemos responder con esta base?
+- ¿Cuáles son los artistas más populares por cantidad de ventas?
+- ¿Cuál es el género musical con más ventas?
+- ¿Cuál es el cliente que más plata gastó en la tienda?
+- ¿Cuáles son las canciones más reproducidas?
+- ¿Cuál es la ciudad con más compras de música?
+
+### Parte 2: Un docker compose con la imagen de postgreSQL 12.7:
 [Docker Compose](docker-compose.yml)
 El puerto 5666 fue elegido para ser mapeado para conexiones externas, dentro del contenedor el puerto usado es por defecto 5432
+
+### Parte 3: Script SQL para crear las tablas (sin poblarlas)
+
