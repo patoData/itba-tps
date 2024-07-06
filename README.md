@@ -16,3 +16,5 @@ de varios tutoriales que he realizado en los path de Ms Learn.
 - ¿Cuál es el tiempo promedio de entrega de los productos?
 - ¿Qué productos tienen el mayor costo de producción?
 
+### Parte 2:
+Un docker compose con la imagen de postgreSQL 12.7:
