@@ -1,0 +1,11 @@
+FROM python:3.9
+
+WORKDIR /queries
+
+COPY requirements.txt .
+
+RUN pip install --no-cache-dir -r requirements.txt
+
+COPY query_database.py .
+
+CMD ["python", "query_database.py"]

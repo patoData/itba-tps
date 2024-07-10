@@ -1,0 +1,13 @@
+{
+  "artist": "Artist.csv",
+  "album": "Album.csv",
+  "genre": "Genre.csv",
+  "media_type": "MediaType.csv",
+  "track": "Track.csv",
+  "employee": "Employee.csv",
+  "customer": "Customer.csv",
+  "invoice": "Invoice.csv",
+  "invoice_line": "InvoiceLine.csv",
+  "playlist": "Playlist.csv",
+  "playlist_track": "PlaylistTrack.csv"
+}

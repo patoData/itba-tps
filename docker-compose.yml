@@ -10,5 +10,41 @@ services:
     volumes:
       - pgdata:/var/lib/postgresql/data
       - ./scripts:/docker-entrypoint-initdb.d
+
+  data_loader:
+    build: 
+      context: .
+      dockerfile: Dockerfile
+    container_name: data_loader
+    depends_on:
+      - db
+    environment:
+      POSTGRES_USER: itbatps
+      POSTGRES_PASSWORD: password
+      POSTGRES_HOST: db
+      POSTGRES_DB: chinook
+      WAIT_TIME: 60
+    volumes:
+      - ./csv_files:/to_sql/csv_files
+    command: ["python", "csv_to_sql.py"]
+
+  query_database:
+    build: 
+      context: .
+      dockerfile: Dockerfile_2
+    container_name: queries_sql
+    depends_on:
+      - db
+      - data_loader
+    environment:
+      POSTGRES_USER: itbatps
+      POSTGRES_PASSWORD: password
+      POSTGRES_HOST: db
+      POSTGRES_DB: chinook
+      WAIT_TIME: 120
+    volumes:
+      - ./sql_queries:/queries/sql_queries
+    command: ["python", "query_database.py"]
+
 volumes:
   pgdata:

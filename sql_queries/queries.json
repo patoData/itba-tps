@@ -1,0 +1,24 @@
+{
+    "queries": [
+        {
+            "message": "¿Cuáles son los 5 artistas más populares por cantidad de ventas?",
+            "query": "SELECT ar.name AS Artist, COUNT(ii.track_id) AS Sales FROM invoice_line ii JOIN track t ON ii.track_id= t.track_id JOIN album al ON t.album_id = al.album_id JOIN artist ar ON al.artist_id = ar.artist_id GROUP BY ar.name ORDER BY Sales DESC LIMIT 5;"
+        },
+        {
+            "message": "¿Cuál es el género musical con más ventas totales?",
+            "query": "SELECT g.Name AS Genre, SUM(ii.Quantity) AS TotalSales FROM invoice_line ii JOIN track t ON ii.track_id = t.track_id JOIN genre g ON t.genre_id = g.genre_id GROUP BY g.Name ORDER BY TotalSales DESC LIMIT 1;"
+        },
+        {
+            "message": "¿Cuál es el cliente que más ha gastado en la tienda?",
+            "query": "SELECT c.first_name || ' ' || c.last_name AS Customer, SUM(i.total) AS TotalSpent FROM invoice i JOIN customer c ON i.customer_id = c.customer_id GROUP BY c.customer_id ORDER BY TotalSpent DESC LIMIT 1;"
+        },
+        {
+            "message": "¿Cuáles son las 5 pistas más reproducidas?",
+            "query": "SELECT t.Name AS Track, COUNT(ii.track_id) AS PlayCount FROM invoice_line ii JOIN track t ON ii.track_id = t.track_id GROUP BY t.Name ORDER BY PlayCount DESC LIMIT 5;"
+        },
+        {
+            "message": "¿Cuál es la ciudad con más compras de música?",
+            "query": "SELECT c.City, COUNT(i.invoice_id) AS PurchaseCount FROM invoice i JOIN customer c ON i.customer_id = c.customer_id GROUP BY c.City ORDER BY PurchaseCount DESC LIMIT 1;"
+        }
+    ]
+}
