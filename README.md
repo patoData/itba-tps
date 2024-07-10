@@ -31,3 +31,22 @@ El puerto 5666 fue elegido para ser mapeado para conexiones externas, dentro del
 
 ### Parte 3: Script SQL para crear las tablas (sin poblarlas)
 [Script](scripts/chinook.sql)
+
+### Parte 4: Popular la base de datos
+[Docker Compose](docker-compose.yml)
+En el mismo archivo docker compose, se configura la App data_loader que se encarga de popular la base de datos SQL, esta recibe como
+parametros las credenciales de la base de datos como variables de entorno, los CSV en un volumen y un archivo de configuracion para
+saber que tablas ingestar. 
+En el codigo [Data Loader](csv_to_sql.py) se incluye 2 funciones comentadas para activar/desactivar las constraints en caso de que el usuario agregue mas tablas o use datos diferentes a los expuestos en este repositorio. En el caso de este repositorio no es necesario ya que el orden
+de las ingestas es el correcto para no crear conflictos entre llaves de las tablas.
+
+### Parte 5: Consultas a la base de datos
+[Docker Compose](docker-compose.yml)
+En el mismo archivo docker compose, se configura la App query_database que se encarga de realizar consultas SQL a la base, recibe como parametros
+las credenciales de la base de datos, y un archivo JSON con las consultas a realizar, agregando a este JSON nuevas consultas, estas se realizaran
+de manera automatica a la base al correr el contenedor.
+La variable de entorno WAIT_TIME espera tantos segundos como se le pase en el [Docker Compose](docker-compose.yml) y es necesaria si se ejecuta en
+conjunto para esperar a que la base sea populada antes de realizar las consultas, sino puede correrse esta imagen con el cmd = 'Docker run' luego
+de que haya finalizado la creacion y carga de la base de datos.
+
+### Parte 6: Documentación y ejecución end2end
